@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EventStageController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <HBox prefHeight="47.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label text="Subject:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="subjectTF" prefHeight="25.0" prefWidth="350.0">
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="30.0" prefHeight="47.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label text="Location:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="locationTF" prefHeight="25.0" prefWidth="350.0">
+                     <HBox.margin>
+                        <Insets left="72.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="77.0" prefHeight="47.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label text="Starting Date-Time:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="startingDatePicker" prefWidth="140.0" />
+                  <HBox prefHeight="27.0" prefWidth="259.0" spacing="5.0">
+                     <children>
+                        <TextField fx:id="startingHourTF" prefHeight="25.0" prefWidth="35.0" />
+                        <Label text=":">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="startingMinTF" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="35.0" />
+                        <ComboBox fx:id="startingTimeCB" prefWidth="60.0" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="124.0" prefHeight="47.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label text="Ending Date-Time:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="endingDatePicker" prefWidth="140.0">
+                     <HBox.margin>
+                        <Insets left="7.0" />
+                     </HBox.margin></DatePicker>
+                  <HBox prefHeight="36.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <TextField fx:id="endingHourTF" prefHeight="25.0" prefWidth="35.0" />
+                        <Label text=":">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="endingMinTF" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="35.0" />
+                        <ComboBox fx:id="endingTimeCB" prefWidth="60.0" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="171.0" prefHeight="47.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label text="Importance:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="importanceCB" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets left="53.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="80.0" prefWidth="600.0" spacing="20.0">
+               <children>
+                  <Label text="Comments:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="commentsTA" prefHeight="60.0" prefWidth="411.0">
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </TextArea>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="265.0" prefHeight="65.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButtonClick" prefHeight="35.0" prefWidth="100.0" text="Save">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</Pane>

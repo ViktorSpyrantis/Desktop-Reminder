@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainStageController">
+   <top>
+      <VBox prefHeight="70.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="45.0" prefWidth="150.0">
+               <children>
+                  <Button fx:id="addEventButton" mnemonicParsing="false" onAction="#addEventClick" prefHeight="45.0" prefWidth="90.0" text="Add Event">
+                     <HBox.margin>
+                        <Insets left="200.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="editEventButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#editEventClick" prefHeight="45.0" prefWidth="90.0" text="Edit Event">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="eraseEventButton" layoutX="100.0" layoutY="10.0" mnemonicParsing="false" onAction="#eraseEventClick" prefHeight="45.0" prefWidth="90.0" text="Erase Event">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </top>
+   <center>
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="subjectColumn" minWidth="91.0" prefWidth="95.0" text="Subject" />
+          <TableColumn fx:id="startingDateColumn" minWidth="100.0" prefWidth="136.0" text="Date" />
+            <TableColumn fx:id="startingTimeColumn" minWidth="100.0" prefWidth="109.0" text="Time" />
+            <TableColumn fx:id="locationColumn" minWidth="100.0" prefWidth="260.0" text="Location" />
+            <TableColumn fx:id="importanceColumn" minWidth="100.0" prefWidth="150.0" text="Importance" />
+        </columns>
+      </TableView>
+   </center>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="200.0" visible="false" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="viewContentsButton" mnemonicParsing="false" onAction="#viewContentsClick" text="VIEW COTNENTS">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="alarmButton" mnemonicParsing="false" onAction="#alarmButtonClick" text="Turn ALarm On">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children></VBox>
+   </left>
+</BorderPane>
