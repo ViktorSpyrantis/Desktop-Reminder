@@ -7,32 +7,25 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.apache.derby.iapi.sql.PreparedStatement;
 
 public class DataBase {
 	private static final String DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
 	public static final String JDBC_URL = "jdbc:derby:mydb;create=true";
 	private static int id = 1;
-	//public static final String JDBC_URL = "jdbc:derby://localhost:1527/mydb;create=true";
 	private static Connection connection;
 
 	public static void createDatabase() throws ClassNotFoundException, SQLException{
 		Class.forName(DRIVER);
 		connection = DriverManager.getConnection(JDBC_URL);
-		//connection.createStatement().execute("update Events set id = 4 where SUBJECT = 'CPU'");
-
-
 
 		//Set the id variable to the maximum ID value on the table
 		Statement statement = connection.createStatement();
 		ResultSet resultSet = statement.executeQuery("select MAX(ID) from Events");
 		if (resultSet.next()){
 			setId(Integer.parseInt(resultSet.getString(1)));
-			System.out.println("MAX id VALUE IS " + resultSet.getString(1));
 		}
 
 		connection.createStatement().execute("create table Events(id int not null, subject varchar(30), location varchar(30), starting_date varchar(15), starting_time varchar(10), ending_date varchar(15), ending_time varchar(10), importance varchar(25), comments varchar(150))");
-
 		System.out.println("Success");
 	}
 
@@ -55,6 +48,7 @@ public class DataBase {
 		connection.createStatement().execute("delete from Events where id = " + id);
 	}
 
+	//prints table contents on the console
 	public static void viewTableContents(String table) throws SQLException{
 		Connection connection = DriverManager.getConnection(JDBC_URL);
 		Statement statement = connection.createStatement();
@@ -121,7 +115,6 @@ public class DataBase {
 
 	//returns the subject of the event closest o the current Date-Time to the Alarm class
 	public static String getEventSubject() throws SQLException{
-		int id = 0;
 		String subj = "";
 		Connection connection = DriverManager.getConnection(JDBC_URL);
 		Statement statement = connection.createStatement();

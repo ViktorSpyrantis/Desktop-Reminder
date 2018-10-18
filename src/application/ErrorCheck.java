@@ -5,18 +5,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Date;
-import java.util.Locale;
 
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 public class ErrorCheck {
 
@@ -27,13 +17,10 @@ public class ErrorCheck {
 
 		boolean errorsExist = true;
 		
-		
-		//textFieldsAreBlank(subj, loc, stDate, stHour, stMin, endDate, endDate,st);
 
 		try {
 			errorsExist = wrongTimeValues(stHour, stMin, endHour, endMin);
 		} catch (NumberFormatException e) {
-			System.out.println("STH WRONG");
 			e.printStackTrace();
 		}
 		
@@ -49,10 +36,7 @@ public class ErrorCheck {
 		return false;
 
 	}
-	
-	//private boolean textFieldsAreBlank() {
-		
-	//}
+
 
 	//Checking for syntax errors on hour and minute values
 	private boolean wrongTimeValues(String sh, String sm, String eh, String em) throws IOException{
@@ -132,41 +116,5 @@ public class ErrorCheck {
 
 
 
-	private  void popUpWindow(String tx) throws IOException{
-		try {
-			Stage newStage = new Stage();
-			VBox comp = new VBox();
-			comp.setAlignment(Pos.CENTER);
-			comp.setSpacing(30);
-			Text t = new Text();
-			t.setText(tx);
-			t.setStyle("-fx-font: 14 arial; -fx-text-alignment: center;");
-
-			Button button = new Button();
-			button.setText("OK");
-			button.setPrefSize(50, 40);
-			button.setStyle(String.format("-fx-font-size: 14;"));
-			button.setOnAction(e -> {
-				newStage.close();
-			});
-
-			comp.getChildren().add(t);
-			comp.getChildren().add(button);
-
-			Scene stageScene;
-			if(tx.length() > 40){
-				stageScene  = new Scene(comp, (7 * tx.length()), (2 * tx.length()));
-			}else{
-				stageScene = new Scene(comp, 300, 120);
-			}
-
-			newStage.setScene(stageScene);
-			newStage.setResizable(false);
-			newStage.initModality(Modality.APPLICATION_MODAL);
-			newStage.showAndWait();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 }

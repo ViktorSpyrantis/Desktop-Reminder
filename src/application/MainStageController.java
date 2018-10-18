@@ -30,21 +30,20 @@ public class MainStageController {
 	private static ObservableList<Events> eventsList = FXCollections.observableArrayList();
 	private static int id = 0;
 	private static boolean newEvent = false;		//a boolean value to help the EventStageController class to check which button was pressed
-	private static boolean isRowSelected = false;
 	PopUpWindow popUpWindow = new PopUpWindow();
 
 	@FXML
 	private TableView<Events> tableView = new TableView<>();;
 	@FXML
-	private TableColumn<Events, String> subjectColumn;// = new TableColumn<>("Subject");
+	private TableColumn<Events, String> subjectColumn;
 	@FXML
-	private TableColumn<Events, String> startingDateColumn;// = new TableColumn<>("Date");
+	private TableColumn<Events, String> startingDateColumn;
 	@FXML
-	private TableColumn<Events, String> startingTimeColumn;// = new TableColumn<>("Time");
+	private TableColumn<Events, String> startingTimeColumn;
 	@FXML
-	private TableColumn<Product, String> locationColumn;// = new TableColumn<>();
+	private TableColumn<Product, String> locationColumn;
 	@FXML
-	private TableColumn<Product, String> importanceColumn;// = new TableColumn<>();
+	private TableColumn<Product, String> importanceColumn;
 
 
 
@@ -105,7 +104,6 @@ public class MainStageController {
 		//tableView.refresh();
 		PopUpWindow.deleteEventPopUp("Do you wish to delete the selected event?");
 		if(PopUpWindow.getWillErase()) {
-			System.out.println("fffff" + PopUpWindow.getWillErase());
 			DataBase.deleteEvent(ev.getId());
 			tableView.getItems().remove(ev);
 		};
@@ -114,8 +112,6 @@ public class MainStageController {
 	}
 
 	public void setTableView() throws SQLException{
-		System.out.println("hey bb");
-		//tableView.refresh();
 		for ( int i = 0; i<tableView.getItems().size(); i++) {
 			tableView.getItems().clear();
 		}
@@ -137,9 +133,7 @@ public class MainStageController {
 		    for (int column = 1; column <= columnCount; column++){
 		        String value = resultSet.getString(column);
 		        columnList.add(String.valueOf(value));
-		        //System.out.println(value);
 		        StringBuilder columnName = new StringBuilder(meta.getColumnName(column));
-		        //System.out.println(columnName);
 
 		        switch(columnName.toString()){
 		        	case "ID":
@@ -170,9 +164,6 @@ public class MainStageController {
 		        		event.setComments(value.toString());
 		        		break;
 		        }
-
-		        //System.out.print(event.getEndingDate());
-		        //System.out.println("   " + columnName);
 		        columnName.setLength(0);				//erasing the contents of the StringBuilder
 		    }
 		    tableView.getItems().addAll(event);
@@ -180,76 +171,9 @@ public class MainStageController {
 
 		}
 
-		// add the rowList to the request.
-
-		tableView.setItems(eventsList);			//Sets the default products (laptop/popcorn etc...)
-	}
-/*
-	public void addToTableView(int lastId) throws SQLException {
-		tableView.refresh();
-		Connection connection = DriverManager.getConnection(DataBase.JDBC_URL);
-		Statement statement = connection.createStatement();
-		ResultSet resultSet = statement.executeQuery("select * from Events where id = " + lastId);
-		ResultSetMetaData meta = resultSet.getMetaData();
-		final int columnCount = meta.getColumnCount();
-		List<List<String>> rowList = new LinkedList<List<String>>();
-
-		while (resultSet.next()){
-		//resultSet.next();
-		//if (resultSet.last()){
-		    List<String> columnList = new LinkedList<String>();
-		    rowList.add(columnList);
-		    Events event = new Events();
-		    for (int column = 1; column <= columnCount; column++){
-		        String value = resultSet.getString(column);
-		        columnList.add(String.valueOf(value));
-		        //System.out.println(value);
-		        StringBuilder columnName = new StringBuilder(meta.getColumnName(column));
-		        //System.out.println(columnName);
-
-		        switch(columnName.toString()){
-	        		case "ID":
-	        			event.setId(Integer.parseInt(value));
-	        			break;
-		        	case "SUBJECT":
-		        		event.setSubject(value.toString());
-		        		break;
-		        	case "LOCATION":
-		        		event.setLocation(value.toString());
-		        		break;
-		        	case "STARTING_DATE":
-		        		event.setStartingDate(value.toString());
-		        		break;
-		        	case "STARTING_TIME":
-		        		event.setStartingTime(value.toString());
-		        		break;
-		        	case "ENDING_DATE":
-		        		event.setEndingDate(value.toString());
-		        		break;
-		        	case "ENDING_TIME":
-		        		event.setEndingTime(value.toString());
-		        		break;
-		        	case "IMPORTANCE":
-		        		event.setImportance(value.toString());
-		        		break;
-		        	case "COMMENTS":
-		        		event.setComments(value.toString());
-		        		break;
-		        }
-
-		        //System.out.print(event.getEndingDate());
-		        //System.out.println("   " + columnName);
-		        columnName.setLength(0);				//erasing the contents of the StringBuilder
-		    }
-		    tableView.getItems().addAll(event);
-		    eventsList.add(event);
-
-		}
-
-		// add the rowList to the request.
+		
 		tableView.setItems(eventsList);
 	}
-*/
 
 	@FXML
     private void viewContentsClick() throws SQLException{

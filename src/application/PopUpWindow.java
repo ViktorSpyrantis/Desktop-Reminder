@@ -9,9 +9,7 @@ import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
@@ -27,7 +25,6 @@ public class PopUpWindow {
 			frame.setPreferredSize(new Dimension(450, 170));
 			JPanel panel = new JPanel();
 			panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-			JDialog dialog = new JDialog();
 	        
 	        JTextArea textArea = new JTextArea ();
 	        textArea.setText(text);
@@ -70,12 +67,10 @@ public class PopUpWindow {
 	//
 	public static boolean deleteEventPopUp(String text) {
 		try {
-			final boolean willDelete = false;
 			final JFrame frame = new JFrame();
 			frame.setPreferredSize(new Dimension(450, 170));
 			JPanel panel = new JPanel();
 			panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-			JDialog dialog = new JDialog();
 	        
 	        JTextArea textArea = new JTextArea ();
 	        textArea.setText(text);

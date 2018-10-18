@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
@@ -31,8 +30,8 @@ public class Main extends Application {
 
         try{
         	DataBase.createDatabase();
-        }catch(SQLException e){
-        	//e.printStackTrace();
+        //An exception is thrown here during initialization, if a table already exists
+        }catch(SQLException e){			
         	System.out.println("SQL exception, probably cause table already exists");
         }catch(ClassNotFoundException e){
 			e.printStackTrace();

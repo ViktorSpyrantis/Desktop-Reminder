@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -13,9 +12,7 @@ import java.util.Date;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -121,10 +118,9 @@ public class EventStageController {
     }
 
 
-	/*
-	 * the 'Save' button will add a new event to the DataBase table if the 'Add Event' button was pressed
-	 */
-	//and it will modify an existing event if the 'Edit Event' button was
+	
+	//the 'Save' button will add a new event to the DataBase table if the 'Add Event' button is pressed and it will modify an existing event if the 'Edit Event' button is pressed
+
 	public void saveButtonClick() throws SQLException, ClassNotFoundException, IOException, ParseException{
 		Stage stage = (Stage) startingTimeCB.getScene().getWindow();
 		boolean errorsExist;// = false;
@@ -201,15 +197,4 @@ public class EventStageController {
 	        }
 	    });
 	}
-
-	/*
-	private void setDatePickerRestrictions(DatePicker dp, LocalDate dateSelected){
-		// Disable Monday, Tueday, Wednesday.
-		if (dateSelected.getDayOfWeek() == DayOfWeek.MONDAY || dateSelected.getDayOfWeek() == DayOfWeek.TUESDAY){
-			dp.setDisable(true);
-			//dp.setStyle("-fx-background-color: #ffc0cb;");
-		}                       
-
-	}
-*/
 }
